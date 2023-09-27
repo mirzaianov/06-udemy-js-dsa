@@ -40,11 +40,32 @@ class LinkedList {
   getLength() {
     console.log('Length: ' + this.length);
   }
+
+  makeEmpty() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+
+  /// WRITE PUSH METHOD HERE ///
+  push(value) {
+    if (!this.head) {
+      this.head = new Node(value);
+      this.tail = this.head;
+    } else {
+      this.tail.next = new Node(value);
+      this.tail = this.tail.next;
+    }
+
+    this.length++;
+  }
 }
 
 function test() {
-  let myLinkedList = new LinkedList(4);
-
+  let myLinkedList = new LinkedList(1);
+  myLinkedList.makeEmpty();
+  myLinkedList.push(1);
+  myLinkedList.push(2);
   myLinkedList.getHead();
   myLinkedList.getTail();
   myLinkedList.getLength();
@@ -57,11 +78,12 @@ test();
 /*
     EXPECTED OUTPUT:
     ----------------
-    Head: 4
-    Tail: 4
-    Length: 1
+    Head: 1
+    Tail: 2
+    Length: 2
 
     Linked List:
-    4
+    1
+    2
 
 */
